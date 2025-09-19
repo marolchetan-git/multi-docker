@@ -13,12 +13,12 @@ jobs:
       - run: docker build -t chetanmarol/react-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true chetanmarol/react-test npm test
       
-      - run: docker build -t rallycoding/multi-client ./client
-      - run: docker build -t rallycoding/multi-nginx ./nginx
-      - run: docker build -t rallycoding/multi-server ./server
-      - run: docker build -t rallycoding/multi-worker ./worker
+      - run: docker build -t chetanmarol/multi-client ./client
+      - run: docker build -t chetanmarol/multi-nginx ./nginx
+      - run: docker build -t chetanmarol/multi-server ./server
+      - run: docker build -t chetanmarol/multi-worker ./worker
 
-      - run: docker push rallycoding/multi-client
-      - run: docker push rallycoding/multi-nginx
-      - run: docker push rallycoding/multi-server
-      - run: docker push rallycoding/multi-worker
+      - run: docker push chetanmarol/multi-client
+      - run: docker push chetanmarol/multi-nginx
+      - run: docker push chetanmarol/multi-server
+      - run: docker push chetanmarol/multi-worker
