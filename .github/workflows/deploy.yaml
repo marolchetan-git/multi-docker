@@ -14,10 +14,10 @@ jobs:
       - run: docker run -e CI=true chetanmarol/react-test npm test
       
       - run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker build -t chetanmarol/multi-client ./client
-      - run: docker build -t chetanmarol/multi-nginx ./nginx
-      - run: docker build -t chetanmarol/multi-server ./server
-      - run: docker build -t chetanmarol/multi-worker ./worker
+      - run: docker build -t chetanmarol/multi-client -f ./client/Dockerfile.dev ./client
+      - run: docker build -t chetanmarol/multi-nginx -f ./nginx/Dockerfile.dev ./nginx
+      - run: docker build -t chetanmarol/multi-server -f ./server/Dockerfile.dev ./server
+      - run: docker build -t chetanmarol/multi-worker -f ./worker/Dockerfile.dev ./worker
 
       - run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
       - run: docker push chetanmarol/chetanmarol:multi-client
