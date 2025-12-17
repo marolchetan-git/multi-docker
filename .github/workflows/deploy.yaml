@@ -23,6 +23,9 @@ jobs:
       - run: docker push chetanmarol/multi-server
       - run: docker push chetanmarol/multi-worker
       
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
+        
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v22
         with:
