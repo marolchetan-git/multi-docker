@@ -22,3 +22,15 @@ jobs:
       - run: docker push chetanmarol/multi-nginx
       - run: docker push chetanmarol/multi-server
       - run: docker push chetanmarol/multi-worker
+      
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v22
+        with:
+          application_name: multi-docker
+          environment_name: multi-docker-env
+          aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws_secret_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          existing_bucket_name: elasticbeanstalk-eu-north-1-462719822395
+          region: eu-north-1
+          version_label: ${{ github.sha }}
+          deployment_package: deploy.zip
